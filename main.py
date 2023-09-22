@@ -5,6 +5,7 @@ from datetime import datetime
 import ipman
 import syncman
 import schedule
+import time
 
 isINIT = True
 
@@ -30,4 +31,10 @@ def sync():
         print("Continue")
 
 
-schedule.every().day.at("04:00:00").do(sync)
+init()  # Initialization
+
+schedule.every().day.at("04:00:00").do(sync)  # 오전 4시에 동기화 작업 실행
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)

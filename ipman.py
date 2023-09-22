@@ -5,6 +5,7 @@ from datetime import datetime
 
 
 def getPublicIP():  # 공인 IP 로드
+    # 추후 mcvkr API로 변경 예정 https://mcv.kr/myip/api.php
     response = requests.get('https://httpbin.org/ip')
     publicIpv4 = response.json()['origin']
     return publicIpv4
