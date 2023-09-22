@@ -11,9 +11,8 @@ isINIT = True
 
 
 def init():
+    global isINIT
     if isINIT == True:  # 최초 실행시
-
-        loginData = syncman.loadConfig()  # 로그인 정보 로드
         ipman.savePublicIP(ipman.getPublicIP())  # 실행시 공인 IP 저장
         isINIT = False
         print("init complete")
@@ -22,19 +21,25 @@ def init():
 
 
 def sync():
-    print("Start Sync")
-    nowIP = ipman.getPublicIP()  # 공인 IP 로드
-    if ipman.checkIP(nowIP, ipman.loadStandardIP):  # 공인 IP 대조군과 비교
-        syncman.login(syncman.loginConfig)  # MCVKR 로그인
-        syncman.syncIP(nowIP)  # MCVKR DDNS 동기화
+    print("Start Sync Module")
+    if ipman.checkIP(ipman.getPublicIP(), ipman.loadStandardIP()) == 1:  # 공인 IP 대조군과 비교
+        print("Sync...")
+        loginData = syncman.loadConfig()
+        syncman.syncIP(loginData, ipman.getPublicIP())
+        pass
+
     else:
-        print("Continue")
+        print("Continue...")
+        pass
 
 
-init()  # Initialization
+def main():
+    sync()
+    schedule.every().day.at("04:00:00").do(sync)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
 
-schedule.every().day.at("04:00:00").do(sync)  # 오전 4시에 동기화 작업 실행
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+# main()
+syncman.syncNow(syncman.loadConfig(), ipman.getPublicIP())
