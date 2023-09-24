@@ -25,7 +25,7 @@ Header_DNS = {
     'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
     'Cache-Control': 'max-age=0',
     'Connection': 'keep-alive',
-    'Cookie': 'id=ldw5635; accountstatus=c6ce1b7d52de4180cd07393003c78ae7873780f7087f72eb00bf7f689dfc81b7',
+    'Cookie': 'id=ldw5635; accountstatus=aaa',
     'Host': 'mcv.kr',
     'Referer': 'https://mcv.kr/',
     'Sec-Ch-Ua': '"Chromium";v="116", "Not)A;Brand";v="24", "Google Chrome";v="116"',
