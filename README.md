@@ -1,8 +1,9 @@
 # McvkrDDNS
 
-WIP now ( 23. 09. 24 )
+WIP now ( 23. 09. 27 )
 
 현재 작동하지 않습니다.
+로그인까지만 구현됨.
 초안 작성중.
 
 MCV KR Pipefilter Service는 고정 IP만 지원하나,
